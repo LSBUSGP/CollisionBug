@@ -14,17 +14,15 @@ public class PlayerRigidbody : MonoBehaviour
         physics = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        physics.velocity = Vector3.right;
+        physics.MovePosition(physics.position + Vector3.right * Time.deltaTime);
     }
 
     public void Respawn()
     {
-        physics.isKinematic = true;
         physics.position = position;
         physics.rotation = rotation;
-        physics.isKinematic = false;
     }
 
     void OnCollisionEnter(Collision collision)
